@@ -7,6 +7,8 @@ import { resolvers as airlineResolvers } from './airline/AirlineResolvers';
 import { typeDefs as userTypeDefs } from './user/UserTypeDefs';
 import { resolvers as userResolvers } from './user/userResolvers';
 
+import { typeDefs as flightTypeDefs } from './flight/FlightTypeDefs';
+import { resolvers as flightResolvers } from './flight/flightResolvers';
 
 import models from '../models';
 import db from '../models';
@@ -16,24 +18,26 @@ const server = new ApolloServer({
         airlineTypeDefs,
         credentialsTypeDefs,
         userTypeDefs,
+        flightTypeDefs
     ],
     resolvers: [
         airlineResolvers,
         credentialsResolvers,
-        userResolvers
+        userResolvers,
+        flightResolvers
     ],
     context: (req: any) => ({ models, req }),
 })
 
-//migration mode
-// db.sequelize.sync({ match: /_dev$/ }).then(() => {
-db.sequelize.sync({ match: /airlinedb$/, force: true }).then(() => {
-    server.listen().then(({ url }: { url: String }) => {
-        console.log(`Server listening at ${url}`);
-    })
-})
-
-// //normal mode
-// server.listen().then(({ url }: { url: String }) => {
-//     console.log(`Server listening at ${url}`);
+// //migration mode
+// // db.sequelize.sync({ match: /_dev$/ }).then(() => {
+// db.sequelize.sync({ match: /airlinedb$/, force: true }).then(() => {
+//     server.listen().then(({ url }: { url: String }) => {
+//         console.log(`Server listening at ${url}`);
+//     })
 // })
+
+//normal mode
+server.listen().then(({ url }: { url: String }) => {
+    console.log(`Server listening at ${url}`);
+})
