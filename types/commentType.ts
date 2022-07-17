@@ -1,4 +1,4 @@
-export type CommentType = {
+export type commentType = {
     id: number | null
     text: string
     tags: string
@@ -7,7 +7,7 @@ export type CommentType = {
     AirlineId: number
 }
 
-export const EmptyComment: CommentType = {
+export const EmptyComment: commentType = {
     id: 0,
     text: '',
     tags: '',

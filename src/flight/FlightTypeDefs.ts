@@ -5,40 +5,56 @@ export const typeDefs = gql`
     flights(
       name: String!,
       debug: String!,
-    ): flightList!
+    ): FlightList!
 
     flightById(
       id: ID!,
       debug: String!,
-      ):flightCRUDResponse!
+      ):FlightCRUDResponse!
   }
 
-  type flightList{
+  type FlightList{
     success: Boolean!
     message: String!
-    flights: [flight]
+    flights: [Flight]
   }
 
   type Mutation {
     flightCreate(
       name: String!
-    ): flightCRUDResponse!
+    ): FlightCRUDResponse!
     flightUpdate(
       id: ID!
       name: String!
-    ): flightCRUDResponse!
+    ): FlightCRUDResponse!
     flightDelete(
       id: ID!
-    ): flightCRUDResponse!
+    ): FlightCRUDResponse!
+
+    addCommentToFlight(
+      flightId: ID!, 
+      text: String!, 
+      tags: [String]!
+    ): FlightCRUDResponse!
+
   }
-  type flightCRUDResponse {
+  type FlightCRUDResponse {
     success: Boolean!
     message: String!
-    flight: flight!
+    flight: Flight!
   }
 
-  type flight {
+  type Flight {
     id: ID! 
-    name: String
+    name: String!
+    comments:[Comment]
+  }
+
+  type Comment {
+    id: ID!
+    text: String!
+    tags: String!
+    flight: Flight!
+    user: User!
   }
 `;
