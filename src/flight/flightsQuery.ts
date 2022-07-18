@@ -8,7 +8,7 @@ log.setLevel(process.env.LOG_LEVEL ? process.env.LOG_LEVEL as log.LogLevelDesc :
 export const handleFlights = async (_: any, args: any, { models, req }: { models: any, req: any }) => {
     //filters from the user
     let where: any = {}
-    if (args.name && args.name !== "") { where.name = { [Op.iLike]: args.name + '%' } }
+    if (args.name && args.name !== "") { where.name = { [Op.iLike]: '%' + args.name + '%' } }
     try {
         const { userAirlineId } = await tenantContext(req, 'FLIGHTS')
         where.AirlineId = userAirlineId //tenant security filter
@@ -23,7 +23,7 @@ export const handleFlights = async (_: any, args: any, { models, req }: { models
 
         return {
             success: true,
-            message: 'Listado de niveles',
+            message: 'List of flights',
             flights
         }
     } catch (e: any) {

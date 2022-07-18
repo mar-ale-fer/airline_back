@@ -1,7 +1,7 @@
 {
-  "name": "englishinstitute_backend",
+  "name": "airline_backend",
   "version": "1.0.0",
-  "description": "English Institute backend",
+  "description": "Airline backend",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mar-ale-fer/englishinstitute_backend.git"
+    "url": "git+https://github.com/mar-ale-fer/airline_back.git"
   },
   "author": "Marcelo Alejandro Fernández",
   "license": "MPL-2.0",
   "bugs": {
-    "url": "https://github.com/mar-ale-fer/englishinstitute_backend/issues"
+    "url": "https://github.com/mar-ale-fer/airline_back/issues"
   },
-  "homepage": "https://github.com/mar-ale-fer/englishinstitute_backend#readme",
+  "homepage": "https://github.com/mar-ale-fer/airline_back#readme",
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.13",
